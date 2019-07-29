@@ -1,7 +1,7 @@
 const router = require('express').Router();
 
 const Users = require('../data/models/user-model.js');
-const restricted = require('../authentication/restricted-middleware.js');
+const restricted = require('../auth/restricted-middleware.js');
 
 router.get('/', restricted, (req, res) => {
   Users.find()
