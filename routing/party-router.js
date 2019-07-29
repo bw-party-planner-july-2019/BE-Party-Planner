@@ -37,7 +37,7 @@ router.post('/', async (req, res) => {
 		console.log(err);
 		res.status(500).json(err);
 	}
-});
+});//
 
 //PUT -> /parties/id
 router.put('/:id', async (req, res) => {
