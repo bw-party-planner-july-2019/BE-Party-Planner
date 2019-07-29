@@ -14,6 +14,7 @@ function find() {
 }
 
 function findBy(filter) {
+    
 	return db('party').where(filter);
 }
 
