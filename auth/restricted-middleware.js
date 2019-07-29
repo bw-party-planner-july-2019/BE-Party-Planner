@@ -1,13 +1,10 @@
 const jwt = require('jsonwebtoken');
 
-const secret = require('../api/secrets.js');
+const secrets = require('../api/secrets.js');
 
 module.exports = (req, res, next) => {
   const token = req.headers.authorization;
-  
-  module.exports = (req, res, next) => {
-    const token = req.headers.authorization;
-  ​
+
     if (token) {
       jwt.verify(token, secrets.jwtSecret, (err, decodedToken) => {
         if (err) {
@@ -20,9 +17,8 @@ module.exports = (req, res, next) => {
     } else {
       res.status(401).json({ message: 'You are not authorized' });
     }
-  };
 
-  // token
+      // token
   //   ? jwt.verify(token, secret.jwtSecret, (err, decodedToken) => {
   //     if (err) {
   //       console.log('ERROR: ', err);
@@ -33,5 +29,7 @@ module.exports = (req, res, next) => {
   //     }
   //   })
   //   : res.status(400).json({ message: "Error: No Credentials Provided" });
+  };
 
-}
+
+
