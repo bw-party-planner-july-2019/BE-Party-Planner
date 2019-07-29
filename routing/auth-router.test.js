@@ -19,7 +19,7 @@ describe('auth-router', () => {
 		});
 	});
 	describe('POST /login endpoint', () => {
-		it('returns status 401 when trying to login an unregister user', () => {
+		it('returns status 401 when trying to login an unregistered user', () => {
 			const newUser = { username: 'testy', password: 'testy' };
 
 			return request(authRouter).post('/auth/login').send(newUser).then((res) => {

@@ -33,11 +33,11 @@ router.post('/login', (req, res) => {
 					token
 				});
 			} else {
-					res.status(401).json({ message: 'Error: Invalid Credentials' });
+				res.status(401).json({ message: 'Error: Invalid Credentials' });
 			}
 		})
 		.catch((error) => {
-				res.status(500).json(error);
+			res.status(500).json(error);
 		});
 });
 
