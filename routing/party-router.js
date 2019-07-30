@@ -4,9 +4,8 @@ const Parties = require('../data/models/party-model');
 
 // GET -> /parties
 router.get('/', async (req, res) => {
-	// Your Id of the USER is on req.decodedJwt.subject
 	try {
-		const parties = await Parties.findByUserId(req.decodedJwt.subject);
+		const parties = await Parties.find();
 		res.status(200).json(parties);
 		console.log(req.query);
 		console.log(req.params);
