@@ -5,19 +5,11 @@ const Parties = require('../data/models/party-model');
 // GET -> /parties
 router.get('/', async (req, res) => {
 	try {
-<<<<<<< HEAD
-		const parties = await Parties.findByUserId(req.decodedjwt.user.id);
-        res.status(200).json(parties);
-        console.log(req.query);
-        console.log(req.params);
-        console.log(req.sessions);
-=======
 		const parties = await Parties.find();
 		res.status(200).json(parties);
 		console.log(req.query);
 		console.log(req.params);
 		console.log(req.sessions);
->>>>>>> 142631954166cc37128aea469c794378a9d11c04
 	} catch (err) {
 		console.log(err);
 		res.status(500).json(err);
