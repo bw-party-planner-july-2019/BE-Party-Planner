@@ -10,35 +10,36 @@ router.post('/register', (req, res) => {
 	user.password = hash;
 
 	Users.add(user)
-		.then((saved) => {
-            const {password, ...rest} = saved;
+		.then(saved => {
+			const { password, ...rest } = saved;
 			res.status(201).json(rest);
 		})
-		.catch((error) => {
+		.catch(error => {
 			res.status(500).json(error);
 		});
 });
 
 router.post('/login', (req, res) => {
-    let { username, password } = req.body;
-    console.log(req.body);
+	let { username, password } = req.body;
+	console.log(req.body);
 
 	Users.findBy({ username })
 		.first()
-		.then((user) => {
+		.then(user => {
 			if (user && bcrypt.compareSync(password, user.password)) {
 				const token = generateToken(user);
 
 				res.status(200).json({
-					username: user.username,
-					userID: user.id,
-					token
+					username : user.username,
+					userID   : user.id,
+					token,
 				});
 			} else {
 				res.status(401).json({ message: 'Error: Invalid Credentials' });
 			}
 		})
-		.catch((error) => {
+		.catch(error => {
+			console.log(error);
 			res.status(500).json(error);
 		});
 });
