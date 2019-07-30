@@ -60,7 +60,7 @@ router.put('/:id', async (req, res) => {
 router.delete('/:id', async (req, res) => {
 	try {
 		const count = await Parties.remove(req.params.id);
-		if (count > 0) {
+		if (count !== 0) {
 			res.status(200).json({ message: 'Party Deleted' });
 		} else {
 			res.status(404).json({ message: 'Error: Unable to find party' });
@@ -68,6 +68,6 @@ router.delete('/:id', async (req, res) => {
 	} catch (err) {
 		res.status(500).json(err);
 	}
-});
+}); //
 
 module.exports = router;
