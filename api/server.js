@@ -1,7 +1,7 @@
 const express = require('express');
 const helmet = require('helmet');
 const cors = require('cors');
-
+const userRouter = require('../routing/user-router');
 const authRouter = require('../routing/auth-router');
 const partyRouter = require('../routing/party-router');
 const shoppingRouter = require('../routing/shopping-router');
@@ -13,7 +13,7 @@ const server = express();
 server.use(helmet());
 server.use(express.json());
 server.use(cors());
-
+server.use('/users', userRouter);
 server.use('/auth', authRouter);
 server.use('/parties', restricted, partyRouter);
 server.use(
