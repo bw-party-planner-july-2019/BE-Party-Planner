@@ -3,14 +3,13 @@ const restricted = require('../auth/restricted-middleware');
 const Parties = require('../data/models/party-model');
 
 // GET -> /parties
-router.get('/', restricted, async (req, res) => {
-    console.log(req);
+router.get('/', async (req, res) => {
 	try {
-		const parties = await Parties.findByUserId(req.user.id);
-        res.status(200).json(parties);
-        console.log(req.query);
-        console.log(req.params);
-        console.log(req.sessions);
+		const parties = await Parties.find();
+		res.status(200).json(parties);
+		console.log(req.query);
+		console.log(req.params);
+		console.log(req.sessions);
 	} catch (err) {
 		console.log(err);
 		res.status(500).json(err);
@@ -19,18 +18,18 @@ router.get('/', restricted, async (req, res) => {
 
 // GET -> /parties/id
 router.get('/:id', async (req, res) => {
-  try {
-    const party = await Parties.findById(req.params.id);
-    if (party) {
-      res.status(200).json(party);
-    } else {
-      res.status(404).json({ message: 'Error: Party not found' });
-    }
-  } catch (error) {
-    console.log(error)
-    res.status(500).json({ Error: `${error}` });
-  }
-}); 
+	try {
+		const party = await Parties.findById(req.params.id);
+		if (party) {
+			res.status(200).json(party);
+		} else {
+			res.status(404).json({ message: 'Error: Party not found' });
+		}
+	} catch (error) {
+		console.log(error);
+		res.status(500).json({ Error: `${error}` });
+	}
+});
 
 // POST -> /parties
 router.post('/', async (req, res) => {
@@ -41,7 +40,7 @@ router.post('/', async (req, res) => {
 		console.log(err);
 		res.status(500).json(err);
 	}
-});//
+}); //
 
 //PUT -> /parties/id
 router.put('/:id', async (req, res) => {

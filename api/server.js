@@ -23,7 +23,7 @@ server.use(
 		req.id = req.params.id;
 		next();
 	},
-	shoppingRouter
+	shoppingRouter,
 );
 server.use(
 	'/parties/:id/todo/',
@@ -32,7 +32,7 @@ server.use(
 		req.id = req.params.id;
 		next();
 	},
-	todoRouter
+	todoRouter,
 );
 
 server.get('/', (req, res) => {
