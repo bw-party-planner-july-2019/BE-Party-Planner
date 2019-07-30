@@ -1,9 +1,9 @@
 const router = require('express').Router();
-
+const restricted = require('../auth/restricted-middleware');
 const Parties = require('../data/models/party-model');
 
 // GET -> /parties
-router.get('/', async (req, res) => {
+router.get('/', restricted, async (req, res) => {
 	try {
 		const parties = await Parties.find();
 		res.status(200).json(parties);
