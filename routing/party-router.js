@@ -4,9 +4,13 @@ const Parties = require('../data/models/party-model');
 
 // GET -> /parties
 router.get('/', restricted, async (req, res) => {
+    console.log(req);
 	try {
-		const parties = await Parties.find();
-		res.status(200).json(parties);
+		const parties = await Parties.findByUserId(req.user.id);
+        res.status(200).json(parties);
+        console.log(req.query);
+        console.log(req.params);
+        console.log(req.sessions);
 	} catch (err) {
 		console.log(err);
 		res.status(500).json(err);

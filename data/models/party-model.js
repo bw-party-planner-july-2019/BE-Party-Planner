@@ -6,7 +6,8 @@ module.exports = {
 	findBy,
 	findById,
 	remove,
-	update
+    update,
+    findByUserId
 };
 
 function find() {
@@ -16,6 +17,10 @@ function find() {
 function findBy(filter) {
     
 	return db('party').where(filter);
+}
+
+async function findByUserId(id) {
+    return db('party').where('user_id', id)
 }
 
 async function add(party) {
