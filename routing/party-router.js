@@ -6,7 +6,7 @@ const Parties = require('../data/models/party-model');
 router.get('/', restricted, async (req, res) => {
     console.log(req);
 	try {
-		const parties = await Parties.findByUserId(req.user.id);
+		const parties = await Parties.findByUserId(req.decodedjwt.user.id);
         res.status(200).json(parties);
         console.log(req.query);
         console.log(req.params);
