@@ -20,7 +20,7 @@ function findBy(filter) {
 }
 
 async function add(item) {
-	const [ id ] = await db('shopping_list').insert(item);
+	const [ id ] = await db('shopping_list').insert(item, 'id');
 
 	return findById(id);
 }
