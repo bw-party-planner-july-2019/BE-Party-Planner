@@ -19,7 +19,7 @@ function findBy(filter) {
 }
 
 async function add(todo) {
-	const [ id ] = await db('todo_list').insert(todo);
+	const [ id ] = await db('todo_list').insert(todo, 'id');
 
 	return findById(id);
 }

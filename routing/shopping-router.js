@@ -30,7 +30,7 @@ router.get('/:id', async (req, res) => {
 
 // POST -> /parties/:id/shopping
 router.post('/', async (req, res) => {
-  const partyID = req.id;
+  const partyID = req.params.id;
 	try {
     const item = await Shopping.add(req.body);
     item && `${item.party_id}` === partyID
