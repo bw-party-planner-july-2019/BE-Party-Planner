@@ -62,7 +62,7 @@ router.put('/:id', async (req, res) => {
 router.delete('/:id', async (req, res) => {
 	try {
 		const count = await Todo.remove(req.params.id);
-		if (count > 0) {
+		if (count !== 0) {
 			res.status(200).json({ message: 'To do item deleted' });
 		} else {
 			res.status(404).json({ message: 'Error: Unable to find to do' });

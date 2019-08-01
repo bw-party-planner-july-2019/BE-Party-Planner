@@ -64,7 +64,7 @@ router.delete('/:id', async (req, res) => {
   console.log(req.params.id);
 	try {
 		const count = await Shopping.remove(req.params.id);
-		if (count > 0) {
+		if (count !== 0) {
 			res.status(200).json({ message: 'Item deleted' });
 		} else {
 			res.status(404).json({ message: 'Error: Item does not exist' });
